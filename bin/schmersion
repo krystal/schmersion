@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
+
+require 'schmersion'
+require 'swamp/cli'
+require 'git'
+require 'colorize'
+
+begin
+  cli = Swamp::CLI.new(:schmersion, version: Schmersion::VERSION)
+  cli.load_from_directory(File.expand_path('../cli', __dir__))
+  cli.dispatch(ARGV.empty? ? ['help'] : ARGV)
+rescue Swamp::Error, Git::GitExecuteError, Schmersion::Error => e
+  warn "\e[31mError: #{e.message}\e[0m"
+  exit 2
+rescue Interrupt
+  exit 3
+end

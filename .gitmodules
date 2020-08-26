@@ -1,0 +1,3 @@
+[submodule "spec/examples/repo"]
+	path = spec/examples/repo
+	url = git@github.com:krystal/schmersion-spec-repo.git
