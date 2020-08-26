@@ -1,12 +1,28 @@
 # frozen_string_literal: true
 
 module Schmersion
+  class Version
 
-  VERSION_FILE_ROOT = File.expand_path('../../VERSION', __dir__)
-  if File.file?(VERSION_FILE_ROOT)
-    VERSION = File.read(VERSION_FILE_ROOT).strip.sub(/\Av/, '')
-  else
-    VERSION = '0.0.0.dev'
+    attr_reader :version
+    attr_reader :commit_parser
+
+    def initialize(repo, version, commit_parser)
+      @repo = repo
+      @version = version
+      @commit_parser = commit_parser
+    end
+
+    def commits
+      @commit_parser.commits
+    end
+
+    def start_commit
+      @commit_parser.start_commit
+    end
+
+    def end_commit
+      @commit_parser.end_commit
+    end
+
   end
-
 end

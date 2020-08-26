@@ -4,7 +4,7 @@ require 'git'
 require 'semantic'
 require 'schmersion/commit_parser'
 require 'schmersion/commit'
-require 'schmersion/calculated_version'
+require 'schmersion/version'
 
 module Schmersion
   class Repo
@@ -36,7 +36,7 @@ module Schmersion
 
       [
         previous_version,
-        CalculatedVersion.new(self, next_version, parser)
+        Version.new(self, next_version, parser)
       ]
     end
 
