@@ -32,3 +32,71 @@ There are other options available too:
 - `schmersion log` displays a full list of all valid commits in date order.
 
 - `schmersion versions` displays a list of all versions in date order.
+
+## Configuration
+
+This is an example configuration file which should be placed in the root of the repository and named `.schmersion.yaml`.
+
+```yaml
+# Types is a list of the commit types that are supported. This will be enforced by the
+# linter when new commits are added. Commits that are added with a type not in this list
+# will always be ignored by Schmersion (along with merge commits and commits which do not
+# match the required format).
+types:
+  - feat
+  - fix
+  - chore
+  - refactor
+
+# If you wish to limit which scopes are valid, you can list them here. They apply to
+# all types. Do not specify this if you wish to allow any scope.
+scopes:
+  - rspec
+  - login
+
+# These options allow you to customise how the next version is determined.
+version_options:
+  # By default, any breaking change will cause an increase to the MAJOR part of
+  # of the version. You can disable this if you wish by setting this option to true.
+  breaking_change_not_major: false
+
+# Finally, you can define options for how you wish your CHANGELOG files to be
+# exported when releases happen. You can define the name (path) where the file
+# will be exported to as well as the formatter and any options which the formatter
+# may wish to use. You can define as many exports as you wish.
+exports:
+  - name: CHANGELOG.md
+    formatter: markdown
+    options:
+      # The title to add at the top of the file
+      title: Katapult CHANGELOG
+      # Some additional descriptive text
+      description: Some example text which will be inserted at the top of the CHANGELOG.
+      # An array of sections to include with a title and an array of commit types to
+      # include in that section. Sections with no commits will be excluded.
+      sections:
+        - title: New Features
+          types: [feat]
+        - title: Bug Fixes
+          types: [fix]
+
+  - name: CHANGELOG.internal.md
+    formatter: markdown
+    options:
+      title: Katapult Internal CHANGELOG
+      sections:
+        - title: Public Features
+          types: [feat]
+          sort: alpha
+        - title: Public Fixes
+          types: [fix]
+          sort: date
+        - title: Internal Updates
+          types: [chore, refactor]
+
+  - name: CHANGELOG.yaml
+    formatter: yaml
+    options:
+      # The commit types to include the generated YAML file.
+      types: [feat, fix]
+```
