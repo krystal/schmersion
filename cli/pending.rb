@@ -18,10 +18,7 @@ command :pending do
     repo = Schmersion::Repo.new(FileUtils.pwd)
     current_version, next_version = repo.pending_version(
       from: context.options[:from],
-      to: context.options[:to],
-      version_options: {
-        # breaking_change_not_major: true
-      }
+      to: context.options[:to]
     )
 
     puts
