@@ -25,11 +25,15 @@ command :pending do
     )
 
     puts
-    puts 'The current published version is:'
-    puts
-    puts "    #{current_version.to_s.cyan}"
-    puts
-    puts 'The next version should be:'
+    if current_version
+      puts 'The current published version is:'
+      puts
+      puts "    #{current_version.to_s.cyan}"
+      puts
+      puts 'The next version will be:'
+    else
+      puts 'The first version will be:'
+    end
     puts
     puts "    #{next_version.version.to_s.green}"
     puts
