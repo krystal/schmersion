@@ -5,7 +5,7 @@ require 'git'
 require 'schmersion/commit_parser'
 
 describe Schmersion::CommitParser do
-  context '#parse' do
+  context '#initialize' do
     describe 'parses all commits from all time' do
       before(:all) do
         @parser = described_class.new(Git.open(EXAMPLE_REPO_PATH), :start, 'cd23926fbd3d44c806ae0e7e1891de25edfa6406')
@@ -21,6 +21,10 @@ describe Schmersion::CommitParser do
 
       specify 'containing the oldest commit with the correct message' do
         expect(@parser.commits.last.message.header).to eq 'docs(readme): add dev details to readme'
+      end
+
+      specify 'excludes commits with invalid messages' do
+        expect(@parser.commits.map { |c| c.message.header }).to_not include 'random broken commit message'
       end
     end
   end
