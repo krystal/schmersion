@@ -49,7 +49,7 @@ module Schmersion
       @repo.branch.name
     end
 
-    def versions(before: nil)
+    def versions
       versions = @repo.tags.each_with_object([]) do |tag, array|
         commit = @repo.gcommit(tag.sha)
         version = Semantic::Version.new(tag.name)
