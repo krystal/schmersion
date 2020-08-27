@@ -1,5 +1,7 @@
 ![Hello](https://share.adam.ac/20/QXXEtpuHaFotrkDat808.png)
 
+![CI](https://github.com/krystal/schmersion/workflows/CI/badge.svg)
+
 Schmersion is a little library to help generate CHANGELOG documents automatically from commits that are formatted following the Conventional Commits style. There are a few conventions that you should be aware of that your repository should be following before using this:
 
 - Commit messages should be formatted following the Conventional Commit style.
