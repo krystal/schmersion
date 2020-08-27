@@ -91,10 +91,16 @@ describe Schmersion::Message do
 
         This fixes some user login issues which were present
 
-        Something else in the footer here which is split onto multiple
+        Something else in the body here which is split onto multiple
         lines in the commit for ease of use.
 
-        Signed off by: John Smith <john@example.com>
+        Signed-off-by: John Smith <john@example.com>
+        Signed-off-by: Jane Smith <jane@example.com>
+        Ticket #2392
+        Reviewed-on:2020-08-27
+        Review-summary: The fix looks good, but I believe we need to
+        expand the test suite to cover additional user login issues.
+        Reviewed-by:   Jack Smith <jack@example.com>
       MESSAGE
       described_class.new(message)
     end
@@ -119,11 +125,24 @@ describe Schmersion::Message do
       expect(message.header).to eq 'fix(users): fixes user logins'
     end
 
+    it 'has a body matching the commit' do
+      expect(message.body).to eq <<~BODY.strip
+        This fixes some user login issues which were present
+
+        Something else in the body here which is split onto multiple
+        lines in the commit for ease of use.
+      BODY
+    end
+
     it 'has appropriate footers' do
       expect(message.footers).to eq [
-        'This fixes some user login issues which were present',
-        'Something else in the footer here which is split onto multiple lines in the commit for ease of use.',
-        'Signed off by: John Smith <john@example.com>'
+        'Signed-off-by: John Smith <john@example.com>',
+        'Signed-off-by: Jane Smith <jane@example.com>',
+        'Ticket #2392',
+        'Reviewed-on: 2020-08-27',
+        "Review-summary: The fix looks good, but I believe we need to\n" \
+        'expand the test suite to cover additional user login issues.',
+        'Reviewed-by: Jack Smith <jack@example.com>'
       ]
     end
   end
@@ -160,7 +179,7 @@ describe Schmersion::Message do
     end
   end
 
-  context 'with a breaking change description' do
+  context 'with a breaking change footer' do
     subject(:message) do
       message = <<~MESSAGE
         refactor(ruby): remove support for ruby 2.5
@@ -198,9 +217,36 @@ describe Schmersion::Message do
       expect(message.breaking_change?).to be true
     end
 
-    it 'has the breaking change boolean set' do
+    it 'has list of breaking change descriptions' do
       expect(message.breaking_changes).to eq [
         'This will no longer work with Ruby 2.5'
+      ]
+    end
+  end
+
+  context 'with multiple breaking change footers' do
+    subject(:message) do
+      message = <<~MESSAGE
+        refactor(ruby): remove support for ruby 2.5
+
+        BREAKING CHANGE: This will no longer work with Ruby 2.5
+        BREAKING CHANGE: fancy_gem version 4.x or later is now required
+      MESSAGE
+      described_class.new(message)
+    end
+
+    it 'is valid' do
+      expect(message.valid?).to be true
+    end
+
+    it 'returns true for breaking change' do
+      expect(message.breaking_change?).to be true
+    end
+
+    it 'has list of breaking change descriptions' do
+      expect(message.breaking_changes).to eq [
+        'This will no longer work with Ruby 2.5',
+        'fancy_gem version 4.x or later is now required'
       ]
     end
   end
