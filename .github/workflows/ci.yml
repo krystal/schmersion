@@ -25,11 +25,13 @@ jobs:
           - 2.7
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
+      - name: Checkout submodules
+        run: |
+          git submodule sync
+          git submodule update --init
       - name: Configure Bundler
         run: bundle config set rubygems.pkg.github.com "${{ secrets.KRYSTAL_GITHUB_PACKAGE_READ_KEY }}"
       - name: Install dependencies
