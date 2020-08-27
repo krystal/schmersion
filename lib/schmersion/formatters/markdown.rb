@@ -11,7 +11,7 @@ module Schmersion
         lines << "## #{version.version}\n"
 
         sections_for_commits(version.commits).each do |section, commits|
-          lines << "### #{section['description']}\n"
+          lines << "### #{section['title']}\n"
           commits.each do |commit|
             first_line = '- '
             first_line += "**#{commit.message.scope}:** " if commit.message.scope
