@@ -10,7 +10,7 @@ module Schmersion
       DEFAULT_STRUCTURE = [].to_yaml.freeze
 
       def generate(version)
-        commits = version.commits.sort_by { |c| c.message.title.upcase }
+        commits = version.commits.sort_by { |c| c.message.description.upcase }
 
         commits = commits.each_with_object([]) do |commit, array|
           next unless include_type?(commit.message.type)
@@ -44,7 +44,7 @@ module Schmersion
           'date' => commit.date.to_s,
           'type' => commit.message.type,
           'scope' => commit.message.scope,
-          'title' => commit.message.title,
+          'description' => commit.message.description,
           'breaking_change' => commit.message.breaking_change?,
           'breaking_changes' => commit.message.breaking_changes,
           'pull_request_id' => commit.message.pull_request_id,

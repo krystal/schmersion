@@ -43,8 +43,8 @@ describe Schmersion::Message do
       expect(message.scope).to be nil
     end
 
-    it 'has the correct title' do
-      expect(message.title).to eq 'an example feature'
+    it 'has the correct description' do
+      expect(message.description).to eq 'an example feature'
     end
 
     it 'has a header matching the commit' do
@@ -71,8 +71,8 @@ describe Schmersion::Message do
       expect(message.scope).to eq 'factory'
     end
 
-    it 'has the correct title' do
-      expect(message.title).to eq 'an example feature'
+    it 'has the correct description' do
+      expect(message.description).to eq 'an example feature'
     end
 
     it 'has a header matching the commit' do
@@ -117,8 +117,8 @@ describe Schmersion::Message do
       expect(message.scope).to eq 'users'
     end
 
-    it 'has the correct title' do
-      expect(message.title).to eq 'fixes user logins'
+    it 'has the correct description' do
+      expect(message.description).to eq 'fixes user logins'
     end
 
     it 'has a header matching the commit' do
@@ -162,8 +162,8 @@ describe Schmersion::Message do
       expect(message.scope).to eq 'factory'
     end
 
-    it 'has the correct title' do
-      expect(message.title).to eq 'an example feature'
+    it 'has the correct description' do
+      expect(message.description).to eq 'an example feature'
     end
 
     it 'has a header matching the commit' do
@@ -201,8 +201,8 @@ describe Schmersion::Message do
       expect(message.scope).to eq 'ruby'
     end
 
-    it 'has the correct title' do
-      expect(message.title).to eq 'remove support for ruby 2.5'
+    it 'has the correct description' do
+      expect(message.description).to eq 'remove support for ruby 2.5'
     end
 
     it 'has a header matching the commit' do

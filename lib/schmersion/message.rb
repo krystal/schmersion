@@ -11,7 +11,7 @@ module Schmersion
     attr_reader :footers
     attr_reader :type
     attr_reader :scope
-    attr_reader :title
+    attr_reader :description
     attr_reader :body
     attr_reader :pull_request_id
     attr_reader :breaking_changes
@@ -49,7 +49,7 @@ module Schmersion
 
       @type = match[1]
       @scope = match[2]
-      @title = match[4].strip
+      @description = match[4].strip
       @pull_request_id = match[5]
 
       @breaking_change = true if match[3] == '!'
