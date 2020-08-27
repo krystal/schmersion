@@ -22,7 +22,7 @@ module Schmersion
             print ' ! '.white.on_red
           end
           print ': '
-          puts commit.message.title
+          puts commit.message.description
         end
       end
 

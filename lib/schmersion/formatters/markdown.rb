@@ -11,11 +11,11 @@ module Schmersion
         lines << "## #{version.version}\n"
 
         sections_for_commits(version.commits).each do |section, commits|
-          lines << "### #{section['title']}\n"
+          lines << "### #{section['description']}\n"
           commits.each do |commit|
             first_line = '- '
             first_line += "**#{commit.message.scope}:** " if commit.message.scope
-            first_line += capitalize_as_required(commit.message.title)
+            first_line += capitalize_as_required(commit.message.description)
             lines << first_line
             commit.message.footers.each do |footer|
               lines << "  #{capitalize_as_required(footer)}\n"
@@ -48,7 +48,7 @@ module Schmersion
 
       def header
         lines = []
-        lines << "# #{@options['title']}\n"
+        lines << "# #{@options['description']}\n"
         lines << @options['description'] if @options['description']
         lines << nil
         lines.join("\n")
@@ -66,7 +66,7 @@ module Schmersion
 
           next if section_commits.empty?
 
-          section_commits = section_commits.sort_by { |c| c.message.title.upcase }
+          section_commits = section_commits.sort_by { |c| c.message.description.upcase }
 
           array << [section, section_commits]
         end
