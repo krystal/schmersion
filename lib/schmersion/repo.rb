@@ -5,12 +5,21 @@ require 'semantic'
 require 'schmersion/commit_parser'
 require 'schmersion/commit'
 require 'schmersion/version'
+require 'schmersion/config'
 
 module Schmersion
   class Repo
 
+    attr_reader :path
+    attr_reader :repo
+
     def initialize(path)
+      @path = path
       @repo = Git.open(path)
+    end
+
+    def config
+      load_config(['.schmersion.yaml', '.schmersion.yml'])
     end
 
     # Get the pending version for the currently checked out branch
@@ -32,7 +41,11 @@ module Schmersion
       end
 
       parser = CommitParser.new(@repo, previous_version_commit&.ref || :start, to)
-      next_version = parser.next_version_after(previous_version, **options[:version_options])
+      if v = options[:override_version]
+        next_version = Semantic::Version.new(v)
+      else
+        next_version = parser.next_version_after(previous_version, **options[:version_options])
+      end
 
       [
         previous_version,
@@ -58,6 +71,19 @@ module Schmersion
         raise unless e.message =~ /not a valid SemVer/
       end
       versions.sort_by { |_, c| c.date }
+    end
+
+    private
+
+    def load_config(filenames)
+      filenames.each do |filename|
+        path = File.join(@path, filename)
+        if File.file?(path)
+          return Config.new(::YAML.load_file(path))
+        end
+      end
+
+      Config.new({})
     end
 
   end

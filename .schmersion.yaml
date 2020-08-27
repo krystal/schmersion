@@ -1,0 +1,13 @@
+types:
+  - feat
+  - fix
+  - chore
+  - style
+  - test
+  - docs
+
+exports:
+  - name: CHANGELOG.yaml
+    formatter: yaml
+  - name: CHANGELOG2.yaml
+    formatter: yaml

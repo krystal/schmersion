@@ -24,5 +24,9 @@ module Schmersion
       @commit_parser.end_commit
     end
 
+    def commit_message
+      "release(chore): #{version}"
+    end
+
   end
 end
