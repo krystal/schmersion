@@ -25,8 +25,8 @@ jobs:
           - 2.7
     steps:
       - uses: actions/checkout@v2
-      - name: Install system dependencies
-        run: sudo apt-get install libsqlite3-dev
+        with:
+          submodules: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
