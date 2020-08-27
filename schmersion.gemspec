@@ -8,11 +8,14 @@ Gem::Specification.new do |s|
   s.summary       = 'This is a tool for generating CHANGELOGs and managing app versioning.'
   s.homepage      = 'https://github.com/krystal/schmersion'
   s.version       = Schmersion::VERSION
-  s.files         = Dir.glob('VERSION') + Dir.glob('{lib}/**/*')
+  s.files         = Dir.glob('VERSION') + Dir.glob('{lib,cli,bin}/**/*')
   s.require_paths = ['lib']
   s.authors       = ['Adam Cooke']
   s.email         = ['adam@krystal.uk']
   s.required_ruby_version = '>= 2.6'
+  s.bindir = 'bin'
+
+  s.executables << 'schmersion'
 
   s.add_runtime_dependency 'colorize', '~> 0.8'
   s.add_runtime_dependency 'git', '>= 1.7.0', '< 2.0'
