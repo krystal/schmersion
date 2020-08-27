@@ -25,7 +25,7 @@ module Schmersion
     end
 
     def commit_message
-      "release(chore): #{version}"
+      "chore(release): #{version}"
     end
 
   end
