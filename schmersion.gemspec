@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'colorize', '~> 0.8'
   s.add_runtime_dependency 'git', '>= 1.7.0', '< 2.0'
   s.add_runtime_dependency 'semantic', '~> 1.5'
+  s.add_runtime_dependency 'swamp-cli', '~> 1.0'
 
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'rspec', '~> 3.9'
