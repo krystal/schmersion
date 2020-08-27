@@ -47,9 +47,9 @@ module Schmersion
         rescue ArgumentError => e
           if e.message =~ /not a valid SemVer/
             raise Error, "'#{v}' is not a valid version"
-          else
-            raise
           end
+
+          raise
         end
       else
         next_version = parser.next_version_after(previous_version, **options[:version_options])
@@ -70,7 +70,7 @@ module Schmersion
       @repo.branch.name
     end
 
-    def has_version?(version)
+    def version?(version)
       @repo.tag(version.to_s).is_a?(Git::Object::Tag)
     rescue Git::GitTagNameDoesNotExist
       false

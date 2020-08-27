@@ -2,7 +2,7 @@
 
 command :versions do
   desc 'Print a list of all versions in version order'
-  action do |context|
+  action do
     require 'schmersion/repo'
     require 'colorize'
 

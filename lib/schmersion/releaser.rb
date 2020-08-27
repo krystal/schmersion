@@ -25,7 +25,7 @@ module Schmersion
     private
 
     def check_for_for_existing_version
-      if @repo.has_version?(version.version)
+      if @repo.version?(version.version)
         raise Error, "#{version.version} already exists in this repository"
       end
 
@@ -36,7 +36,7 @@ module Schmersion
       return if skip?(:export)
 
       @exports = {}
-      @repo.config.exports.each_with_index do |formatter, index|
+      @repo.config.exports.each do |formatter|
         output = formatter.generate(version)
         @exports[formatter] = output
       end
@@ -88,7 +88,7 @@ module Schmersion
     end
 
     def version
-      @next_version ||= begin
+      @version ||= begin
         @repo.pending_version(
           override_version: @options[:version],
           version_options: {
@@ -106,7 +106,7 @@ module Schmersion
       dry_run? ? :magenta : :green
     end
 
-    def action(action, text, &block)
+    def action(action, text)
       yield unless dry_run?
       print "#{action}: ".colorize(action_color)
       puts text

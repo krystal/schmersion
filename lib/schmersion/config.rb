@@ -24,7 +24,7 @@ module Schmersion
     def valid_scope?(scope)
       return true if scopes.empty?
 
-      scopes.include?(scokpe.to_s)
+      scopes.include?(scope.to_s)
     end
 
     def exports

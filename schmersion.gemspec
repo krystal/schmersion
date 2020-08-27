@@ -12,7 +12,15 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.authors       = ['Adam Cooke']
   s.email         = ['adam@krystal.uk']
-  s.add_runtime_dependency 'git', '>= 1.7.0', '< 2.0'
+  s.required_ruby_version = '>= 2.6'
+
   s.add_runtime_dependency 'colorize', '~> 0.8'
+  s.add_runtime_dependency 'git', '>= 1.7.0', '< 2.0'
   s.add_runtime_dependency 'semantic', '~> 1.5'
+
+  s.add_development_dependency 'rake', '~> 13.0'
+  s.add_development_dependency 'rspec', '~> 3.9'
+  s.add_development_dependency 'rubocop', '~> 0.85'
+  s.add_development_dependency 'rubocop-performance', '~> 1.6'
+  s.add_development_dependency 'rubocop-rspec', '~> 1.39'
 end

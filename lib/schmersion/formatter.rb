@@ -13,9 +13,11 @@ module Schmersion
     # Generate the output which should be included in the export. This
     # should return a string which will also be displayed when doing
     # dry-runs of a release.
+    # rubocop:disable Lint/UnusedMethodArgument
     def generate(version)
       ''
     end
+    # rubocop:enable Lint/UnusedMethodArgument
 
     # Insert a given part into the given source file path
     #

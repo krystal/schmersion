@@ -7,7 +7,7 @@ command :release do
     options[:version] = value
   end
 
-  option '--dry-run', "Don't actually do anything, just show a preview" do |value, options|
+  option '--dry-run', "Don't actually do anything, just show a preview" do |_, options|
     options[:dry_run] = true
   end
 
@@ -15,17 +15,17 @@ command :release do
     options[:pre] = value || true
   end
 
-  option '--skip-export', "Don't generate new CHANGELOG exports" do |value, options|
+  option '--skip-export', "Don't generate new CHANGELOG exports" do |_, options|
     options[:skips] ||= []
     options[:skips] << :export
   end
 
-  option '--skip-commit', "Don't commit anything" do |value, options|
+  option '--skip-commit', "Don't commit anything" do |_, options|
     options[:skips] ||= []
     options[:skips] << :commit
   end
 
-  option '--skip-tag', "Don't create a tag" do |value, options|
+  option '--skip-tag', "Don't create a tag" do |_, options|
     options[:skips] ||= []
     options[:skips] << :tag
   end

@@ -29,7 +29,7 @@ module Schmersion
           File.write(@filename, DEFAULT_STRUCTURE)
         end
 
-        part_as_hash = ::YAML.load(part)
+        part_as_hash = ::YAML.safe_load(part)
         existing_yaml = ::YAML.load_file(@filename)
         existing_yaml = [] unless existing_yaml.is_a?(Array)
         existing_yaml.prepend(part_as_hash)
