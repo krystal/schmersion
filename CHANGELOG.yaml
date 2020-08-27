@@ -1,0 +1,120 @@
+---
+- version: 0.0.1
+  commits:
+  - ref: 3eb6fc64b411eb0bb3c53cdb0813dd91636e2cd5
+    date: '2020-08-27 13:30:47 +0100'
+    type: feat
+    scope: skipping
+    title: ability to skip steps of the release
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 858dd06811c8de15e3566658988fdf4f91e48d49
+    date: '2020-08-26 22:03:20 +0100'
+    type: docs
+    scope: readme
+    title: add an example .schmersion.yaml
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 5025d5875db64fac66748c68ea045dd7e992890d
+    date: '2020-08-27 14:01:47 +0100'
+    type: feat
+    scope: formatters
+    title: add support for markdown formatting
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 7dab9c1bc802b05c65df38f566c1a356243b1def
+    date: '2020-08-26 21:46:12 +0100'
+    type: test
+    scope: 
+    title: fixes commit parser text since commits were reversed
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: c156347ae26676cb249deb0bb6a1bafd23969538
+    date: '2020-08-26 21:37:35 +0100'
+    type: feat
+    scope: initial
+    title: initial bits
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 9fa21c15ba1c16613f12e827ebb026e598496918
+    date: '2020-08-26 21:46:09 +0100'
+    type: chore
+    scope: deps
+    title: remove Gemfile.lock
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 3aa1c35a678bcf7d7db291da6dee91f71baf65a6
+    date: '2020-08-26 21:46:41 +0100'
+    type: chore
+    scope: 
+    title: remove unused argument from Repo#versions
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 237e4988bfb348325285703abd056ebd5b71e685
+    date: '2020-08-26 21:48:51 +0100'
+    type: fix
+    scope: 
+    title: remove version options from `pending` cli action
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 839d6768370e3278d50e446a1336be949b76bbe5
+    date: '2020-08-26 21:41:59 +0100'
+    type: refactor
+    scope: 
+    title: rename CalculatedVersion to Version
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: b443ce4f5f19a534fc13583cc8c2ad54f8158012
+    date: '2020-08-27 13:24:35 +0100'
+    type: feat
+    scope: 
+    title: support for creating releases
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: b2eb5378bce106dc2db24e2ee0f4495ee85dd4e0
+    date: '2020-08-27 14:35:35 +0100'
+    type: feat
+    scope: 
+    title: support for pre release versions
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 7eb9e3a034db54ca0e3d001613f6eb0dc9d509c7
+    date: '2020-08-26 21:51:24 +0100'
+    type: test
+    scope: 
+    title: update commit parser test
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 96d3eb85d55578546bbf0b07601db6701cb86dd2
+    date: '2020-08-26 21:47:49 +0100'
+    type: fix
+    scope: 
+    title: update wording on `pending` when there are no previous versions
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
