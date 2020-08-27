@@ -11,7 +11,7 @@ module Schmersion
     end
 
     def prepare(path, source = nil)
-      return if source.nil?
+      return unless source.nil?
 
       unless File.file?(path)
         raise Error, "No commit message file at the given path (#{path})"
