@@ -4,6 +4,11 @@ module Schmersion
   class Config
 
     DEFAULT_TYPES = %w[feat fix style chore test refactor perf docs ci build revert].freeze
+
+    DEFAULT_VERSION_OPTIONS = {
+      breaking_change_not_major: false
+    }.freeze
+
     DEFAULT_LINTING_OPTIONS = {
       max_description_length: 60
     }.freeze
@@ -40,6 +45,10 @@ module Schmersion
 
     def linting
       DEFAULT_LINTING_OPTIONS.merge(@hash['linting']&.transform_keys(&:to_sym) || {})
+    end
+
+    def version_options
+      DEFAULT_VERSION_OPTIONS.merge(@hash['version_options']&.transform_keys(&:to_sym) || {})
     end
 
     private
