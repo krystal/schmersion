@@ -82,7 +82,7 @@ describe Schmersion::VersionCalculator do
     end
   end
 
-  context 'with a current version of 2.0.0-beta.4 and a range of commits containing features and a pre option' do
+  context 'with a current version of 2.0.0-beta.4 and a range of commits with features and a pre option' do
     subject(:calc) do
       described_class.new('2.0.0-beta.4', [
                             Schmersion::Commit.new(FakeCommit.new('feat: example feature')),
@@ -95,7 +95,7 @@ describe Schmersion::VersionCalculator do
     end
   end
 
-  context 'with a current version of 2.0.0-beta.4 and a range of commits containing features and a different pre option' do
+  context 'with a current version of 2.0.0-beta.4 and a range of commits with features and a different pre option' do
     subject(:calc) do
       described_class.new('2.0.0-beta.4', [
                             Schmersion::Commit.new(FakeCommit.new('feat: example feature')),
