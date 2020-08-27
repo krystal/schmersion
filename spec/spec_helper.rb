@@ -6,7 +6,7 @@ require 'schmersion'
 
 Dir[File.join(SPEC_ROOT, 'specs', 'support', '**', '*.rb')].sort.each { |path| require path }
 
-EXAMPLE_REPO_PATH = File.expand_path('./examples/repo', __dir__)
+EXAMPLE_REPO_PATH = File.expand_path('./example-repo', __dir__)
 
 RSpec.configure do |config|
   config.color = true
