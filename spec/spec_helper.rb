@@ -8,6 +8,24 @@ Dir[File.join(SPEC_ROOT, 'specs', 'support', '**', '*.rb')].sort.each { |path| r
 
 EXAMPLE_REPO_PATH = File.expand_path('./example-repo', __dir__)
 
+require 'digest'
+
+class FakeCommit
+
+  def initialize(message, date: nil)
+    @message = message
+    @sha = Digest::SHA1.hexdigest(Time.now.to_f.to_s)
+    @date = date || Time.now
+    @author = Struct.new(:name).new('John Smith')
+  end
+
+  attr_reader :message
+  attr_reader :sha
+  attr_reader :date
+  attr_reader :author
+
+end
+
 RSpec.configure do |config|
   config.color = true
 
