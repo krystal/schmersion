@@ -14,7 +14,7 @@ module Schmersion
     # should return a string which will also be displayed when doing
     # dry-runs of a release.
     # rubocop:disable Lint/UnusedMethodArgument
-    def generate(version)
+    def generate(repo, version)
       ''
     end
     # rubocop:enable Lint/UnusedMethodArgument

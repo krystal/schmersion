@@ -9,7 +9,7 @@ module Schmersion
 
       DEFAULT_STRUCTURE = [].to_yaml.freeze
 
-      def generate(version)
+      def generate(_, version)
         commits = version.commits.sort_by { |c| c.message.description.upcase }
 
         commits = commits.each_with_object([]) do |commit, array|

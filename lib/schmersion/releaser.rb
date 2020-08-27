@@ -37,7 +37,7 @@ module Schmersion
 
       @exports = {}
       @repo.config.exports.each do |formatter|
-        output = formatter.generate(version)
+        output = formatter.generate(@repo, version)
         @exports[formatter] = output
       end
       @exports

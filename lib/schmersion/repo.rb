@@ -7,6 +7,7 @@ require 'schmersion/commit_parser'
 require 'schmersion/commit'
 require 'schmersion/version'
 require 'schmersion/config'
+require 'schmersion/hosts'
 
 module Schmersion
   class Repo
@@ -21,6 +22,16 @@ module Schmersion
 
     def config
       load_config(['.schmersion.yaml', '.schmersion.yml'])
+    end
+
+    def origin
+      @origin ||= @repo.remotes.find { |r| r.name == 'origin' }&.url
+    end
+
+    def host
+      return nil if origin.nil?
+
+      Hosts.host_for_url(origin)
     end
 
     # Get the pending version for the currently checked out branch

@@ -76,6 +76,11 @@ exports:
       title: Katapult CHANGELOG
       # Some additional descriptive text
       description: Some example text which will be inserted at the top of the CHANGELOG.
+      # URLs are used in some generated markdown files to link to various things.
+      # By default, these are determined from the repository URL but you can override
+      # these below if you wish.
+      urls:
+        commit: https://customdomain.com/$REF
       # An array of sections to include with a title and an array of commit types to
       # include in that section. Sections with no commits will be excluded.
       sections:

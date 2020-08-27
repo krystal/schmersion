@@ -6,7 +6,7 @@ module Schmersion
   module Formatters
     class Markdown < Formatter
 
-      def generate(version)
+      def generate(repo, version)
         lines = []
         lines << "## #{version.version}\n"
 
@@ -15,11 +15,15 @@ module Schmersion
           commits.each do |commit|
             first_line = '- '
             first_line += "**#{commit.message.scope}:** " if commit.message.scope
+
             first_line += capitalize_as_required(commit.message.description)
-            lines << first_line
-            commit.message.footers.each do |footer|
-              lines << "  #{capitalize_as_required(footer)}\n"
+
+            if url = commit_url_for(repo, commit.ref)
+              first_line += ' ('
+              first_line += "[#{commit.ref[0, 6]}](#{url})"
+              first_line += ')'
             end
+            lines << first_line
           end
           lines << nil
         end
@@ -76,6 +80,17 @@ module Schmersion
         return string unless @options['capitalize_strings']
 
         string.sub(/\A([a-z])/) { Regexp.last_match(1).upcase }
+      end
+
+      def commit_url_for(repo, ref)
+        if @options['urls']&.key?('commit')
+          template = @options.dig('urls', 'commit')
+          return nil if template.nil?
+
+          return template.gsub('$REF', ref)
+        end
+
+        repo.host&.url_for_commit(ref)
       end
 
     end

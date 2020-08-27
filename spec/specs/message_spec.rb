@@ -84,6 +84,41 @@ describe Schmersion::Message do
     end
   end
 
+  context 'with a type and some extra random body lines' do
+    subject(:message) do
+      described_class.new(<<~TEXT
+        feat(factory): an example feature
+
+        closes #10
+      TEXT
+                         )
+    end
+
+    it 'is valid' do
+      expect(message.valid?).to be true
+    end
+
+    it 'has the correct type' do
+      expect(message.type).to eq 'feat'
+    end
+
+    it 'has the correct scope' do
+      expect(message.scope).to eq 'factory'
+    end
+
+    it 'has the correct description' do
+      expect(message.description).to eq 'an example feature'
+    end
+
+    it 'has a header matching the commit' do
+      expect(message.header).to eq 'feat(factory): an example feature'
+    end
+
+    it 'has no footers' do
+      expect(message.footers).to eq ['closes #10']
+    end
+  end
+
   context 'with a type, scope, header and some footers' do
     subject(:message) do
       message = <<~MESSAGE
