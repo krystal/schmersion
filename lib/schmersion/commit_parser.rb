@@ -42,18 +42,23 @@ module Schmersion
       @commits
     end
 
-    def next_version_after(version, **options)
-      return '1.0.0' if version.nil?
-
-      if commits.any? { |c| c.message.breaking_change? } && !options[:breaking_change_not_major]
-        increment_type = :major
+    def next_version_after(current_version, **options)
+      if current_version.nil?
+        current_version = Semantic::Version.new('1.0.0')
+        new_version = current_version
+      elsif commits.any? { |c| c.message.breaking_change? } && !options[:breaking_change_not_major]
+        new_version = current_version.increment!(:major)
       elsif commits.any? { |c| c.message.type == 'feat' }
-        increment_type = :minor
+        new_version = current_version.increment!(:minor)
       else
-        increment_type = :patch
+        new_version = current_version.increment!(:patch)
       end
 
-      version.increment!(increment_type)
+      if options[:pre]
+        add_pre_to_version(options[:pre], new_version, current_version)
+      end
+
+      new_version
     end
 
     def skip_commit?(commit)
@@ -62,6 +67,23 @@ module Schmersion
       return true unless commit.message.valid?
 
       false
+    end
+
+    private
+
+    def add_pre_to_version(prefix, version, current_version)
+      prefix = 'pre' unless prefix.is_a?(String)
+
+      current_prefix, current_sequence = current_version&.pre&.split('.', 2)
+      if current_prefix == prefix
+        # If the current version's prefix is the same as the one
+        # that's been selected, we'll increment its integer
+        pre_sequence = current_sequence.to_i + 1
+      else
+        pre_sequence = 1
+      end
+      version.pre = "#{prefix}.#{pre_sequence}"
+      version
     end
 
   end

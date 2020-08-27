@@ -11,6 +11,10 @@ command :pending do
     options[:to] = value
   end
 
+  option '--pre [PREFIX]', 'Create a pre-release version' do |value, options|
+    options[:pre] = value || true
+  end
+
   action do |context|
     require 'schmersion/repo'
     require 'schmersion/helpers'
@@ -18,7 +22,10 @@ command :pending do
     repo = Schmersion::Repo.new(FileUtils.pwd)
     current_version, next_version = repo.pending_version(
       from: context.options[:from],
-      to: context.options[:to]
+      to: context.options[:to],
+      version_options: {
+        pre: context.options[:pre]
+      }
     )
 
     puts

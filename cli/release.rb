@@ -11,6 +11,10 @@ command :release do
     options[:dry_run] = true
   end
 
+  option '--pre [PREFIX]', 'Create a pre-release version' do |value, options|
+    options[:pre] = value || true
+  end
+
   option '--skip-export', "Don't generate new CHANGELOG exports" do |value, options|
     options[:skips] ||= []
     options[:skips] << :export

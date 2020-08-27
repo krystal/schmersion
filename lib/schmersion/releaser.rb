@@ -14,6 +14,7 @@ module Schmersion
     end
 
     def release
+      check_for_for_existing_version
       generate_exports
       preview_exports
       save_exports
@@ -22,6 +23,14 @@ module Schmersion
     end
 
     private
+
+    def check_for_for_existing_version
+      if @repo.has_version?(version.version)
+        raise Error, "#{version.version} already exists in this repository"
+      end
+
+      true
+    end
 
     def generate_exports
       return if skip?(:export)
@@ -81,7 +90,10 @@ module Schmersion
     def version
       @next_version ||= begin
         @repo.pending_version(
-          override_version: @options[:version]
+          override_version: @options[:version],
+          version_options: {
+            pre: @options[:pre]
+          }
         )[1]
       end
     end

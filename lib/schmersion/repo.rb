@@ -42,7 +42,15 @@ module Schmersion
 
       parser = CommitParser.new(@repo, previous_version_commit&.ref || :start, to)
       if v = options[:override_version]
-        next_version = Semantic::Version.new(v)
+        begin
+          next_version = Semantic::Version.new(v)
+        rescue ArgumentError => e
+          if e.message =~ /not a valid SemVer/
+            raise Error, "'#{v}' is not a valid version"
+          else
+            raise
+          end
+        end
       else
         next_version = parser.next_version_after(previous_version, **options[:version_options])
       end
@@ -60,6 +68,12 @@ module Schmersion
 
     def current_branch
       @repo.branch.name
+    end
+
+    def has_version?(version)
+      @repo.tag(version.to_s).is_a?(Git::Object::Tag)
+    rescue Git::GitTagNameDoesNotExist
+      false
     end
 
     def versions
