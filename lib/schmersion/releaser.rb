@@ -24,6 +24,8 @@ module Schmersion
     private
 
     def generate_exports
+      return if skip?(:export)
+
       @exports = {}
       @repo.config.exports.each_with_index do |formatter, index|
         output = formatter.generate(version)
@@ -33,6 +35,7 @@ module Schmersion
     end
 
     def preview_exports
+      return if skip?(:export)
       return unless dry_run?
 
       @exports.each_with_index do |(formatter, output), index|
@@ -46,6 +49,8 @@ module Schmersion
     end
 
     def save_exports
+      return if skip?(:export)
+
       @exports.each do |formatter, output|
         action 'save', formatter.filename do
           formatter.insert(output)
@@ -54,16 +59,20 @@ module Schmersion
     end
 
     def commit
+      return if skip?(:commit)
+
       action 'commit', version.commit_message do
         @repo.repo.reset
         @exports.each_key do |formatter|
           @repo.repo.add(formatter.filename)
         end
-        @repo.repo.commit(version.commit_message)
+        @repo.repo.commit(version.commit_message, allow_empty: true)
       end
     end
 
     def tag
+      return if skip?(:tag)
+
       action 'tag', version.version.to_s do
         @repo.repo.add_tag(version.version.to_s)
       end
@@ -89,6 +98,12 @@ module Schmersion
       yield unless dry_run?
       print "#{action}: ".colorize(action_color)
       puts text
+    end
+
+    def skip?(type)
+      return false if @options[:skips].nil?
+
+      @options[:skips].include?(type)
     end
 
   end

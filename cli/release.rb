@@ -11,6 +11,21 @@ command :release do
     options[:dry_run] = true
   end
 
+  option '--skip-export', "Don't generate new CHANGELOG exports" do |value, options|
+    options[:skips] ||= []
+    options[:skips] << :export
+  end
+
+  option '--skip-commit', "Don't commit anything" do |value, options|
+    options[:skips] ||= []
+    options[:skips] << :commit
+  end
+
+  option '--skip-tag', "Don't create a tag" do |value, options|
+    options[:skips] ||= []
+    options[:skips] << :tag
+  end
+
   action do |context|
     require 'schmersion/repo'
     require 'schmersion/releaser'
