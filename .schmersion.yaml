@@ -5,6 +5,8 @@ types:
   - style
   - test
   - docs
+  - ci
+  - build
 
 exports:
   - name: CHANGELOG.yaml
