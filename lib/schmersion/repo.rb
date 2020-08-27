@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'yaml'
 require 'git'
 require 'semantic'
 require 'schmersion/commit_parser'

@@ -54,6 +54,10 @@ scopes:
   - rspec
   - login
 
+# These options allow you to configure the rules used for linting commit messages.
+linting:
+  max_description_length: 100
+
 # These options allow you to customise how the next version is determined.
 version_options:
   # By default, any breaking change will cause an increase to the MAJOR part of
