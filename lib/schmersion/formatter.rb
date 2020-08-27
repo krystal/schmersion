@@ -5,7 +5,7 @@ module Schmersion
 
     attr_reader :filename
 
-    def initialize(filename, **options)
+    def initialize(filename, options = {})
       @filename = filename
       @options = options
     end
@@ -14,6 +14,7 @@ module Schmersion
     # should return a string which will also be displayed when doing
     # dry-runs of a release.
     def generate(version)
+      ''
     end
 
     # Insert a given part into the given source file path
