@@ -10,7 +10,9 @@ module Schmersion
       @repo = repo
     end
 
-    def prepare(path)
+    def prepare(path, source = nil)
+      return if source.nil?
+
       unless File.file?(path)
         raise Error, "No commit message file at the given path (#{path})"
       end
@@ -86,7 +88,7 @@ module Schmersion
       <<~FILE
         #!/bin/bash
 
-        #{path_to_schmersion} #{command} $1
+        #{path_to_schmersion} #{command} $1 $2 $3
       FILE
     end
 

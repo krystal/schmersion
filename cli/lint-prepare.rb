@@ -7,7 +7,7 @@ command :'lint-prepare' do
     require 'schmersion/linter'
     repo = Schmersion::Repo.new(FileUtils.pwd)
     linter = Schmersion::Linter.new(repo)
-    linter.prepare(context.args[0])
+    linter.prepare(context.args[0], context.args[1])
   end
 end
 
