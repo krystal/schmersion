@@ -17,36 +17,27 @@ module Schmersion
         raise Error, "No commit message file at the given path (#{path})"
       end
 
-      header_lines = []
-      header_lines << '# ====================================================================='
-      header_lines << '# Commit messages must conform to conventional commit formatting.'
-      header_lines << '# This means each commit message must be prefixed with an appropriate'
-      header_lines << '# type and, optionally, a scope. Your message will be validated before'
-      header_lines << '# the commit will be created. '
-      header_lines << '#'
-      header_lines << '# The following TYPES are available to choose from:'
-      header_lines << '#'
-      @repo.config.types.sort.each_slice(3) do |names|
-        types = names.map { |t| " * #{t.to_s.ljust(16)}" }.join
-        header_lines << "# #{types}".strip
-      end
+      lines = []
+      lines << '# ====================================================================='
+      lines << '# Commit messages must conform to conventional commit formatting.'
+      lines << '# This means each commit message must be prefixed with an appropriate'
+      lines << '# type and, optionally, a scope. Your message will be validated before'
+      lines << '# the commit will be created. '
+      lines << '#'
+
+      add_list_for(lines, :types)
 
       unless @repo.config.scopes.empty?
-        header_lines << '#'
-        header_lines << '# The following SCOPES are available to choose from:'
-        header_lines << '#'
-        @repo.config.scopes.sort.each_slice(3) do |names|
-          scopes = names.map { |t| " * #{t.to_s.ljust(16)}" }.join
-          header_lines << "# #{scopes}".strip
-        end
+        lines << '#'
+        add_list_for(lines, :scopes)
       end
 
-      header_lines << '# ====================================================================='
+      lines << '# ====================================================================='
 
-      header_lines = header_lines.join("\n")
+      lines = lines.join("\n")
 
       contents = File.read(path)
-      File.write(path, "\n\n#{header_lines}\n#\n#{contents.strip}")
+      File.write(path, "\n\n#{lines}\n#\n#{contents.strip}")
     end
 
     def validate_file(path)
@@ -69,6 +60,15 @@ module Schmersion
     end
 
     private
+
+    def add_list_for(lines, type)
+      lines << "# The following #{type.to_s.upcase} are available to choose from:"
+      lines << '#'
+      @repo.config.public_send(type).sort.each_slice(3) do |names|
+        types = names.map { |t| " * #{t.to_s.ljust(16)}" }.join
+        lines << "# #{types}".strip
+      end
+    end
 
     def get_commit_message_from_file(contents)
       contents = contents.split('------------------------ >8 ------------------------', 2)[0]
