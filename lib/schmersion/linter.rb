@@ -11,6 +11,8 @@ module Schmersion
     end
 
     def prepare(path, source = nil)
+      previous_commit_message = read_previous_commit_message
+
       return unless source.nil?
 
       unless File.file?(path)
@@ -18,6 +20,14 @@ module Schmersion
       end
 
       lines = []
+
+      if previous_commit_message
+        lines << previous_commit_message
+        lines << ''
+      else
+        lines << "\n"
+      end
+
       lines << '# ====================================================================='
       lines << '# Commit messages must conform to conventional commit formatting.'
       lines << '# This means each commit message must be prefixed with an appropriate'
@@ -37,7 +47,7 @@ module Schmersion
       lines = lines.join("\n")
 
       contents = File.read(path)
-      File.write(path, "\n\n#{lines}\n#\n#{contents.strip}")
+      File.write(path, "#{lines}\n#\n#{contents.strip}")
     end
 
     def validate_file(path)
@@ -51,6 +61,12 @@ module Schmersion
       message = Message.new(contents)
 
       validator = MessageValidator.new(@repo.config, message)
+
+      unless validator.valid?
+        # Save the commit message to a file if its invalid.
+        save_commit_message(contents)
+      end
+
       validator.errors
     end
 
@@ -60,6 +76,19 @@ module Schmersion
     end
 
     private
+
+    def read_previous_commit_message
+      path = '.git/SCHMERSION_EDITMSG'
+      if File.file?(path)
+        contents = File.read(path)
+        FileUtils.rm(path)
+        contents
+      end
+    end
+
+    def save_commit_message(message)
+      File.write('.git/SCHMERSION_EDITMSG', message)
+    end
 
     def add_list_for(lines, type)
       lines << "# The following #{type.to_s.upcase} are available to choose from:"

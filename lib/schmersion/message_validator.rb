@@ -12,6 +12,10 @@ module Schmersion
       validate_all
     end
 
+    def valid?
+      @errors.empty?
+    end
+
     def validate_all
       validate_valid_format
       return unless @message.valid?
