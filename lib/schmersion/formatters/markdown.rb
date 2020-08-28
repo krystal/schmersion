@@ -12,18 +12,10 @@ module Schmersion
 
         sections_for_commits(version.commits).each do |section, commits|
           lines << "### #{section['title']}\n"
-          commits.each do |commit|
-            first_line = '- '
-            first_line += "**#{commit.message.scope}:** " if commit.message.scope
-
-            first_line += capitalize_as_required(commit.message.description)
-
-            if url = commit_url_for(repo, commit.ref)
-              first_line += ' ('
-              first_line += "[#{commit.ref[0, 6]}](#{url})"
-              first_line += ')'
+          commits.each do |_, scope_commits|
+            scope_commits.sort_by { |c| c.message.description.upcase }.each do |commit|
+              lines << commit_line(repo, commit)
             end
-            lines << first_line
           end
           lines << nil
         end
@@ -70,7 +62,13 @@ module Schmersion
 
           next if section_commits.empty?
 
-          section_commits = section_commits.sort_by { |c| c.message.description.upcase }
+          section_commits = section_commits.group_by do |c|
+            c.message.scope
+          end
+
+          section_commits = section_commits.sort_by do |s, _|
+            s&.upcase || 'ZZZZZZ'
+          end
 
           array << [section, section_commits]
         end
@@ -91,6 +89,18 @@ module Schmersion
         end
 
         repo.host&.url_for_commit(ref)
+      end
+
+      def commit_line(repo, commit)
+        first_line = '- '
+        first_line += "**#{commit.message.scope}:** " if commit.message.scope
+        first_line += capitalize_as_required(commit.message.description)
+        if url = commit_url_for(repo, commit.ref)
+          first_line += ' ('
+          first_line += "[#{commit.ref[0, 6]}](#{url})"
+          first_line += ')'
+        end
+        first_line
       end
 
     end
