@@ -95,7 +95,7 @@ module Schmersion
       return if skip?(:tag) && skip?(:commit)
 
       print 'Now run '
-      print "git push --follow-tags origin #{@repo.current_branch}".cyan
+      print "git push --tags origin #{@repo.current_branch}".cyan
       puts ' to publish'
     end
 

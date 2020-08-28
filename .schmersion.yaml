@@ -19,6 +19,9 @@ scopes:
   - schmersion
   - release
 
+linting:
+  max_description_length: 100
+
 exports:
   - name: CHANGELOG.yaml
     formatter: yaml
