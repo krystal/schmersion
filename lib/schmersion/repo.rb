@@ -18,10 +18,20 @@ module Schmersion
     def initialize(path)
       @path = path
       @repo = Git.open(path)
+    rescue ArgumentError => e
+      if e.message =~ /path does not exist/
+        raise Error, "No git repository found at #{path}"
+      end
+
+      raise
+    end
+
+    def path_for(*join)
+      File.join(@path, *join)
     end
 
     def config
-      load_config(['.schmersion.yaml', '.schmersion.yml'])
+      @config ||= load_config(['.schmersion.yaml', '.schmersion.yml'])
     end
 
     def origin
@@ -103,12 +113,13 @@ module Schmersion
 
     def load_config(filenames)
       filenames.each do |filename|
-        path = File.join(@path, filename)
+        path = path_for(filename)
         if File.file?(path)
           return Config.new(::YAML.load_file(path))
         end
       end
 
+      warn 'No config file was found, using defaults'
       Config.new({})
     end
 
