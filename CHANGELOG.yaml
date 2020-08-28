@@ -1,4 +1,93 @@
 ---
+- version: 1.1.0
+  commits:
+  - ref: 03d3ff8562725b0bee7536ad5394276223985c10
+    date: '2020-08-28 11:20:22 +0100'
+    type: chore
+    scope: 
+    description: add MIT licence
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 7a3239d50de428fb0e4172c83ed99db6d75fb7f4
+    date: '2020-08-28 11:29:20 +0100'
+    type: chore
+    scope: 
+    description: add ruby 2.5 support
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 8e100ce4a4a025c46ff87412f38054b0ecaf177d
+    date: '2020-08-28 11:37:51 +0100'
+    type: docs
+    scope: 
+    description: add rubygems badge
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 76be1a87b1c1046cb9c09daa3d058e103d398d15
+    date: '2020-08-28 15:17:32 +0100'
+    type: feat
+    scope: integration
+    description: automatically re-execute schmersion if it is in a project's Gemfile
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - |-
+      If it does re-execute itself via `bundle exec`, it will also set the
+      `SCHMERSION_DISABLE_AUTO_BUNDLE_EXEC` environment to `1` as there's no
+      need for any part of the auto bundle exec code to run.
+  - ref: fd6ea2045e1af792ef6a5e54526b1c1742531ced
+    date: '2020-08-28 12:47:34 +0100'
+    type: fix
+    scope: 
+    description: fixes bug with handling of `breaking_change_not_major` from config
+      files
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: a1da4f4bf452a8964fc3d5ef0a6226db5342afd7
+    date: '2020-08-28 11:34:25 +0100'
+    type: docs
+    scope: 
+    description: fixes spelling error in readme
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: edf26d7774935fc78c1eb61ef2ab9fb61442c3c9
+    date: '2020-08-28 11:35:15 +0100'
+    type: docs
+    scope: 
+    description: specify which commit hooks will be updated
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 472bd30bfbd9978245621c9a04c084f9a92a3c52
+    date: '2020-08-28 14:12:07 +0100'
+    type: refactor
+    scope: linting
+    description: use "/usr/bin/env bash" instead of "/bin/bash" in git hook hashbangs
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: d8561338707f22168b8bd4c07b4d56ef36923382
+    date: '2020-08-28 11:31:22 +0100'
+    type: fix
+    scope: 
+    description: use --tags rather than --follow-tags as we're not making annotated
+      tags
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
 - version: 1.0.1
   commits:
   - ref: 015f1e112951c59d60cf71d9fcfc164a904b98f8
