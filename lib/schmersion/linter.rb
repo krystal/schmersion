@@ -24,12 +24,23 @@ module Schmersion
       header_lines << '# type and, optionally, a scope. Your message will be validated before'
       header_lines << '# the commit will be created. '
       header_lines << '#'
-      header_lines << '# The following types are available to choose from:'
+      header_lines << '# The following TYPES are available to choose from:'
       header_lines << '#'
       @repo.config.types.sort.each_slice(3) do |names|
         types = names.map { |t| " * #{t.to_s.ljust(16)}" }.join
-        header_lines << "# #{types}"
+        header_lines << "# #{types}".strip
       end
+
+      unless @repo.config.scopes.empty?
+        header_lines << '#'
+        header_lines << '# The following SCOPES are available to choose from:'
+        header_lines << '#'
+        @repo.config.scopes.sort.each_slice(3) do |names|
+          scopes = names.map { |t| " * #{t.to_s.ljust(16)}" }.join
+          header_lines << "# #{scopes}".strip
+        end
+      end
+
       header_lines << '# ====================================================================='
 
       header_lines = header_lines.join("\n")
