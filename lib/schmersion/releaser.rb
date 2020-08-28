@@ -20,6 +20,7 @@ module Schmersion
       save_exports
       commit
       tag
+      display_prompt
     end
 
     private
@@ -85,6 +86,17 @@ module Schmersion
       action 'tag', version.version.to_s do
         @repo.repo.add_tag(version.version.to_s)
       end
+    end
+
+    def display_prompt
+      puts
+      puts "Release of #{version.version} completed".white.on_green
+
+      return if skip?(:tag) && skip?(:commit)
+
+      print 'Now run '
+      print "git push --follow-tags origin #{@repo.current_branch}".cyan
+      puts ' to publish'
     end
 
     def version
