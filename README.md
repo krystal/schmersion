@@ -2,20 +2,17 @@
 
 [![CI](https://github.com/krystal/schmersion/workflows/CI/badge.svg)](https://github.com/krystal/schmersion/actions)
 
-Schmersion is a little library to help generate CHANGELOG documents automatically from commits that are formatted following the Conventional Commits style. There are a few conventions that you should be aware of that your repository should be following before using this:
-
-- Commit messages should be formatted following the Conventional Commit style.
-- Versions should be tagged
+Schmersion is a little library to help generate CHANGELOG documents automatically from commits with messages that are formatted following the [Conventional Commits](https://www.conventionalcommits) style (generally that means they contain a type followed by a message).
 
 Schmersion will take on a couple of roles for you:
 
-- It will automatically generate/update a CHANGELOG document (formatted as markdown, yaml, JSON, whatever you want) in your repository and commit this to your repository.
-- It will suggest a new version number for your application based on the commit messages.
+- It will automatically generate/update a CHANGELOG document (formatted as markdown, yaml, whatever you want) in your repository and commit this to your repository.
+
+- It will suggest the next version number following SemVer principles.
+
 - It will create your version tag.
 
 ## Installation
-
-Just install the gem:
 
 ```
 gem install schmersion
@@ -23,17 +20,31 @@ gem install schmersion
 
 ## Getting started
 
-The first thing you'll want to do is run `schmersion pending` in the root of your repository. This will tell you your current version (the latest version tag) and then tell you what your next version should be called and a list of valid commits that will be included in the CHANGELOG.
+Start by entering the root of the repository for the app you wish to work with. Then run `schmersion init` to generate a `.schmersion.yaml` config file. Once created, open this up and configure it as appropriate with the types and export formats you want.
 
-If you're happy with this, you can then run `schmersion release` which will take these commits, add them to your CHANGELOG files (as configured in `.schmersion.yaml`), commit them and make a tag with the given version number. You can, if you wish, override the version number at this stage.
+Next, run `schmersion pending`. This will tell you your current version (the latest version tag) and then tell you what your next version should be called and a list of valid commits that will be included in the CHANGELOG when released.
 
-There are other options available too:
+If you're happy with this, you can then run `schmersion release` which will take these commits, add them to your CHANGELOG files (as configured in `.schmersion.yaml`), commit them and make a tag with the given version number. There are a few options you can pass to the `release` method.
 
-- `schmersion install-linting` will install appropriate pre-commit hooks to your local git repository to ensure that all commit messages are appropriately written.
+- `--dry-run` - run the release and just output what will happen to the terminal without actually running anything
 
-- `schmersion log` displays a full list of all valid commits in date order.
+- `-r` - override the next version number with a value of your choosing
 
-- `schmersion versions` displays a list of all versions in date order.
+- `--pre [type]` - specify that the next version should be a pre-release version. You can pass the prefix for this such as `beta` or `rc` and the commit will be suffixed with something like `-beta.1` as appropriate.
+
+- `--skip-(export|commit|tag)` - you can use this to skip individual steps of the release process as needed.
+
+## Linting
+
+Schmersion can help make sure you write the correct commit messages too. To enable this, you need to run `schmersion setup-linting` eahc time your clone your repository. This will install some git pre-commit hooks that will validate your commit message comply with the requirements for the repository specified in the config file.
+
+## Other commands
+
+- `schmersion versions` - displays a list of all versions in date order.
+
+- `schmersion log` - display all valid commits that are eligible for inclusion in version calculations and CHANGELOG exports.
+
+- `schmersion help` - displays a list of available commands.
 
 ## Configuration
 
@@ -90,20 +101,6 @@ exports:
           types: [feat]
         - title: Bug Fixes
           types: [fix]
-
-  - name: CHANGELOG.internal.md
-    formatter: markdown
-    options:
-      title: Katapult Internal CHANGELOG
-      sections:
-        - title: Public Features
-          types: [feat]
-          sort: alpha
-        - title: Public Fixes
-          types: [fix]
-          sort: date
-        - title: Internal Updates
-          types: [chore, refactor]
 
   - name: CHANGELOG.yaml
     formatter: yaml
