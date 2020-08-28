@@ -20,7 +20,7 @@ describe Schmersion::MessageValidator do
     subject(:validator) { described_class.new(config, Schmersion::Message.new('invalid: add feature')) }
 
     it 'should have an appropriate error' do
-      expect(validator.errors).to include 'Type is not valid'
+      expect(validator.errors).to include 'Type (invalid) is not valid'
     end
   end
 
@@ -29,7 +29,7 @@ describe Schmersion::MessageValidator do
     subject(:validator) { described_class.new(config, Schmersion::Message.new('feat(invalid): add feature')) }
 
     it 'should have an appropriate error' do
-      expect(validator.errors).to include 'Scope is not valid'
+      expect(validator.errors).to include 'Scope (invalid) is not valid'
     end
   end
 
