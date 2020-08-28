@@ -1,4 +1,16 @@
 ---
+- version: 1.0.1
+  commits:
+  - ref: 015f1e112951c59d60cf71d9fcfc164a904b98f8
+    date: '2020-08-28 11:11:14 +0100'
+    type: fix
+    scope: formatting
+    description: fix title on markdown output
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - It was previously displaying description twice
 - version: 1.0.0
   commits:
   - ref: c484f0608723e6ac672eff8fa6889e2737fc795a
