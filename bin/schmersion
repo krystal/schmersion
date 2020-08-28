@@ -3,6 +3,11 @@
 
 $LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
 
+if [nil, '0', 'no', 'false'].include?(ENV['SCHMERSION_DISABLE_AUTO_BUNDLE_EXEC'])
+  require 'schmersion/auto_bundle_exec'
+  Schmersion::AutoBundleExec.when_bundled(:schmersion)
+end
+
 require 'schmersion'
 require 'swamp/cli'
 require 'git'
