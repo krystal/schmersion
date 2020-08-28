@@ -2,7 +2,8 @@ inherit_from:
   - .rubocop_todo.yml
   - https://dev.k.io/rubocop/rubocop.yml
 
-
+AllCops:
+  TargetRubyVersion: 2.5
 
 Metrics/BlockLength:
   Enabled: false

@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.authors       = ['Adam Cooke']
   s.email         = ['adam@krystal.uk']
-  s.required_ruby_version = '>= 2.6'
+  s.required_ruby_version = '>= 2.5'
   s.bindir = 'bin'
 
   s.executables << 'schmersion'
