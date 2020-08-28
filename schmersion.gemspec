@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.homepage      = 'https://github.com/krystal/schmersion'
   s.version       = Schmersion::VERSION
   s.files         = Dir.glob('VERSION') + Dir.glob('{lib,cli,bin}/**/*')
+  s.licenses      = ['MIT']
   s.require_paths = ['lib']
   s.authors       = ['Adam Cooke']
   s.email         = ['adam@krystal.uk']
