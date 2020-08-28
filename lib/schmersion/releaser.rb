@@ -101,11 +101,12 @@ module Schmersion
 
     def version
       @version ||= begin
+        puts @repo.config.version_options
         @repo.pending_version(
           override_version: @options[:version],
           version_options: {
             pre: @options[:pre],
-            breaking_change_not_major: @repo.config.version_options['breaking_change_not_major']
+            breaking_change_not_major: @repo.config.version_options[:breaking_change_not_major]
           }
         )[1]
       end

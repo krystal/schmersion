@@ -24,7 +24,8 @@ command :pending do
       from: context.options[:from],
       to: context.options[:to],
       version_options: {
-        pre: context.options[:pre]
+        pre: context.options[:pre],
+        breaking_change_not_major: repo.config.version_options[:breaking_change_not_major]
       }
     )
 
