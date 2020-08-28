@@ -79,11 +79,11 @@ module Schmersion
 
     def read_previous_commit_message
       path = '.git/SCHMERSION_EDITMSG'
-      if File.file?(path)
-        contents = File.read(path)
-        FileUtils.rm(path)
-        contents
-      end
+      return unless File.file?(path)
+
+      contents = File.read(path)
+      FileUtils.rm(path)
+      contents
     end
 
     def save_commit_message(message)
