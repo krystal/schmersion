@@ -36,7 +36,7 @@ If you're happy with this, you can then run `schmersion release` which will take
 
 ## Linting
 
-Schmersion can help make sure you write the correct commit messages too. To enable this, you need to run `schmersion setup-linting` eahc time your clone your repository. This will install some git pre-commit hooks that will validate your commit message comply with the requirements for the repository specified in the config file.
+Schmersion can help make sure you write the correct commit messages too. To enable this, you need to run `schmersion setup-linting` each time your clone your repository. This will install some git pre-commit hooks that will validate your commit message comply with the requirements for the repository specified in the config file.
 
 ## Other commands
 
