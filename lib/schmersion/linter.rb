@@ -126,7 +126,7 @@ module Schmersion
 
     def hook_file_contents(command)
       <<~FILE
-        #!/bin/bash
+        #!/usr/bin/env bash
 
         #{path_to_schmersion} #{command} $1 $2 $3
       FILE
