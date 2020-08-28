@@ -8,6 +8,14 @@ types:
   - ci
   - build
 
+scopes:
+  - versioning
+  - linting
+  - formatting
+  - hosts
+  - rubocop
+  - spec
+
 exports:
   - name: CHANGELOG.yaml
     formatter: yaml

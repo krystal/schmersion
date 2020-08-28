@@ -12,10 +12,16 @@ command :'lint-validate' do
       exit 0
     end
 
-    puts "There's a few things wrong with your commit message:"
+    puts
+    puts '  Schmersion Commit Linting'.cyan
+    puts
+    puts "  Uh oh. There's a few things wrong with your commit message...".red
+    puts '  Please correct these and re-commit to continue.'.red
+    puts
     errors.each do |error|
-      puts "* #{error}"
+      puts "  => #{error}"
     end
+    puts
     exit 1
   end
 end

@@ -34,20 +34,20 @@ module Schmersion
       return if @message.type.nil?
       return if @config.valid_type?(@message.type)
 
-      errors << 'Type is not valid'
+      errors << "Type (#{@message.type}) is not valid"
     end
 
     def validate_scope
       return if @message.scope.nil?
       return if @config.valid_scope?(@message.scope)
 
-      errors << 'Scope is not valid'
+      errors << "Scope (#{@message.scope}) is not valid"
     end
 
     def validate_description_presence
       return if @message.description&.size&.positive?
 
-      errors << 'A description must be provided'
+      errors << 'A description (text after the type) must be provided'
     end
 
     def validate_description_length
