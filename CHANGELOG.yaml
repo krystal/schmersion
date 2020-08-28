@@ -1,3 +1,358 @@
 ---
+- version: 1.0.0
+  commits:
+  - ref: c484f0608723e6ac672eff8fa6889e2737fc795a
+    date: '2020-08-28 10:30:29 +0100'
+    type: chore
+    scope: schmersion
+    description: add "release" and "schmersion" as valid scopes
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 6b072709c31c8a5d1dce24c1445c47050d31848d
+    date: '2020-08-27 15:08:13 +0100'
+    type: build
+    scope: github
+    description: add github actions workflow
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: fd4e1a6dbed0b3cf86ed9e6e9042dd8f1c61e3d9
+    date: '2020-08-27 22:26:31 +0100'
+    type: docs
+    scope: readme
+    description: add github test status badge
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 4635c6eab92b6d0586e914fe249dd1ca952b4e94
+    date: '2020-08-27 22:27:06 +0100'
+    type: docs
+    scope: readme
+    description: add link to the github actions badge
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: e5d660f62fb7ee0b148ebf15e1b0e557e0fc7528
+    date: '2020-08-28 10:24:20 +0100'
+    type: feat
+    scope: 
+    description: add message after release with git push details
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 359d737059a02c8e1d32d8b4ae8e5b31dbe55162
+    date: '2020-08-28 10:12:18 +0100'
+    type: style
+    scope: 
+    description: add support for refactor commits
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: eff9ac5ef2d379d20b5cbdd9d5be9e0cdd77635f
+    date: '2020-08-27 15:29:00 +0100'
+    type: build
+    scope: gemspec
+    description: add swamp-cli to the gemspec
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 33f331a152b09a5e4c36233eceab78b4f1fccd84
+    date: '2020-08-27 22:21:50 +0100'
+    type: feat
+    scope: 
+    description: add `schmersion init` to create an example config file
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 02e4470f58a09f58db83689472d3122561753030
+    date: '2020-08-27 15:32:34 +0100'
+    type: ci
+    scope: 
+    description: checkout submodules
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: f15ba12220287bf411827f8f08350c69c8178181
+    date: '2020-08-27 15:15:42 +0100'
+    type: ci
+    scope: 
+    description: checkout submodules when running tests on github actions
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 413cc48c119056931e9366d429292b3c586bf891
+    date: '2020-08-27 19:46:46 +0100'
+    type: fix
+    scope: markdown
+    description: correctly display the title in markdown output
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 647ad0389470ffb720c29b16541db6b4c48e01df
+    date: '2020-08-27 17:54:12 +0100'
+    type: fix
+    scope: message
+    description: correctly support footers according to conventional commits spec
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: e2c8040c2fe800bb1b46a216836bf637e53d2b70
+    date: '2020-08-28 09:56:19 +0100'
+    type: feat
+    scope: linting
+    description: display list of scopes in commit comment
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 873d42d28ab8c94129bfc76511aecc084625530c
+    date: '2020-08-28 10:59:02 +0100'
+    type: fix
+    scope: 
+    description: display nicer error when no repo is found
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 7a852ef8de638e8f140173b22019a965e3ae15a9
+    date: '2020-08-27 19:55:35 +0100'
+    type: fix
+    scope: 
+    description: fixes breaking_change_not_major when defined in config file
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - 'closes #1'
+  - ref: 681d78ef316e164c6db881e9e9d490681fd871a2
+    date: '2020-08-28 10:12:21 +0100'
+    type: test
+    scope: spec
+    description: fixes failing test for message validator
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 61b7cfc84dd8209a8ae615f5a8120d54f27d3377
+    date: '2020-08-27 17:03:42 +0100'
+    type: style
+    scope: rubocop
+    description: fixes fsl in version calculator spec
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 0b303c0cb4134049675636f53a3329d4faaa891a
+    date: '2020-08-27 22:12:02 +0100'
+    type: fix
+    scope: 
+    description: fixes release commit message
+    breaking_change: true
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: '0591ebac5275c19f72c8a2f5e58814b80d97f295'
+    date: '2020-08-27 14:56:13 +0100'
+    type: style
+    scope: rubocop
+    description: fixes some rubocop offences
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 29e576826cb29b9e0d2ba8f2eb162e5514e0443c
+    date: '2020-08-28 09:53:18 +0100'
+    type: fix
+    scope: linting
+    description: improve linting error output
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - 'closes #3'
+  - ref: 9a92754ef8b5bc2c9f24fe8f97f49223d1ed7e8a
+    date: '2020-08-27 15:17:13 +0100'
+    type: build
+    scope: gemspec
+    description: include all the files needed to build a gem
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: c1472ce8f8ca0f449917cb1aa8495211174bf99a
+    date: '2020-08-27 15:05:14 +0100'
+    type: docs
+    scope: readme
+    description: moar racoon
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: db859c64f1ee915f42deb3c4b82cb014f6077d4c
+    date: '2020-08-27 22:12:26 +0100'
+    type: fix
+    scope: 
+    description: only prepare commit messages if the source is nil
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - |-
+      This ensures that the commit comment isn't added to commits added using
+      the -m switch.
+  - ref: 4f6105abfdcf2678f3805ae2b8cabc7b5a356715
+    date: '2020-08-28 10:07:45 +0100'
+    type: fix
+    scope: formatting
+    description: order commits by scope in markdown formatter
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - 'closes #4'
+  - ref: 65c8f9178a15208ae69ef7939c57a9913d64427b
+    date: '2020-08-27 22:24:05 +0100'
+    type: fix
+    scope: linting
+    description: re-fixes the linting prepare bug
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 22ed5d4c4bd9556ad05afae06e78f9737a0426ed
+    date: '2020-08-28 10:37:25 +0100'
+    type: feat
+    scope: linting
+    description: re-insert previous commit message after validation error
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 853e0cbcc1e2323a03fc582c7e0750d79152c033
+    date: '2020-08-27 17:53:40 +0100'
+    type: style
+    scope: rubocop
+    description: reduce line length in calculator spec
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 95eb844dc6ee2d706332289e82f8f79febe0e32a
+    date: '2020-08-28 10:11:17 +0100'
+    type: refactor
+    scope: linting
+    description: refactor Linter#prepare to make it less complex
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - 'tidy #  * rubocop          * spec             * versioning'
+  - ref: 5ecc70a062dad48e2adde999071575199b15135e
+    date: '2020-08-28 11:06:39 +0100'
+    type: refactor
+    scope: 
+    description: refactor reading previous commit message
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 3b74e9970bb660fc06efc53d8961e3ef57ac5d20
+    date: '2020-08-27 16:25:49 +0100'
+    type: refactor
+    scope: 
+    description: refactor version calculation
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 51b89031bbb392b8208439907ced91fb1e21862d
+    date: '2020-08-27 15:10:50 +0100'
+    type: test
+    scope: 
+    description: remove old spec repo
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 5836cf92793c31b118ad9089346e197dc0e6b1a7
+    date: '2020-08-27 17:54:12 +0100'
+    type: chore
+    scope: message
+    description: rename title property to description
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - |-
+      The Conventional Commits specification uses the word "description", so
+      let's use the same.
+  - ref: 72bd046dccf8e396371ccaade540f07269a00b59
+    date: '2020-08-27 19:49:20 +0100'
+    type: feat
+    scope: linting
+    description: support for linting commit messages
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 410524a0280b3b70561805e514967afe0bcdd80b
+    date: '2020-08-27 21:59:56 +0100'
+    type: feat
+    scope: markdown
+    description: support for URLs in markdown formatter
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: cdac04d34c7efc2a5077f9839bdee2a3e4321248
+    date: '2020-08-27 14:46:50 +0100'
+    type: docs
+    scope: 
+    description: update changelogs to remove initial commits
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 81f4b4b8c5cd883ed2c8e6f44199239da647e076
+    date: '2020-08-28 09:45:49 +0100'
+    type: docs
+    scope: readme
+    description: update README
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers:
+    - 'closes #5'
+  - ref: d76325f8506e7903242a308157c1073835bed706
+    date: '2020-08-27 15:32:55 +0100'
+    type: docs
+    scope: readme
+    description: update schmersion image to fix bug with version list
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: ef809cfd4f7dddd8a20f42068f036107cc119873
+    date: '2020-08-27 15:13:37 +0100'
+    type: test
+    scope: 
+    description: update submodule for example repo
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
 - version: 0.0.1
   commits: []
