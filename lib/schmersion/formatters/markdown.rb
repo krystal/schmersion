@@ -44,7 +44,7 @@ module Schmersion
 
       def header
         lines = []
-        lines << "# #{@options['description']}\n"
+        lines << "# #{@options['title']}\n"
         lines << @options['description'] if @options['description']
         lines << nil
         lines.join("\n")
