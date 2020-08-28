@@ -16,6 +16,8 @@ scopes:
   - hosts
   - rubocop
   - spec
+  - schmersion
+  - release
 
 exports:
   - name: CHANGELOG.yaml
