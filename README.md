@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/krystal/schmersion/workflows/CI/badge.svg)](https://github.com/krystal/schmersion/actions) [![Gem Version](https://badge.fury.io/rb/schmersion.svg)](https://rubygems.org/gems/schmersion)
 
-Schmersion is a little library to help generate CHANGELOG documents automatically from commits with messages that are formatted following the [Conventional Commits](https://www.conventionalcommits) style (generally that means they contain a type followed by a message).
+Schmersion is a little library to help generate CHANGELOG documents automatically from commits with messages that are formatted following the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) style (generally that means they contain a type followed by a message).
 
 Schmersion will take on a couple of roles for you:
 
