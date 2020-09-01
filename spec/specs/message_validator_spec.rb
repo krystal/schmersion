@@ -43,7 +43,7 @@ describe Schmersion::MessageValidator do
   end
 
   context 'with a merge description' do
-    subject(:validator) { described_class.new(config, Schmersion::Message.new("Merge branch 'master' into other-branch")) }
+    subject(:validator) { described_class.new(config, Schmersion::Message.new("Merge branch 'master' into other")) }
 
     it 'should have an appropriate error' do
       expect(validator.errors).to be_empty
