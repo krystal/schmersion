@@ -41,4 +41,12 @@ describe Schmersion::MessageValidator do
       expect(validator.errors).to include 'Commit description must be less than 60 characters (currently 100)'
     end
   end
+
+  context 'with a merge description' do
+    subject(:validator) { described_class.new(config, Schmersion::Message.new("Merge branch 'master' into other-branch")) }
+
+    it 'should have an appropriate error' do
+      expect(validator.errors).to be_empty
+    end
+  end
 end

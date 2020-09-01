@@ -26,6 +26,22 @@ describe Schmersion::Message do
     it 'has no footers' do
       expect(message.footers).to be_empty
     end
+
+    it 'is not a merge' do
+      expect(message.merge?).to be false
+    end
+  end
+
+  context 'with an merge commit message' do
+    subject(:message) { described_class.new("Merge branch 'master' into other-branch") }
+
+    it 'is not valid' do
+      expect(message.valid?).to be false
+    end
+
+    it 'is a merge' do
+      expect(message.merge?).to be true
+    end
   end
 
   context 'with a type and no scope' do
@@ -54,6 +70,10 @@ describe Schmersion::Message do
     it 'has no footers' do
       expect(message.footers).to be_empty
     end
+
+    it 'is not a merge' do
+      expect(message.merge?).to be false
+    end
   end
 
   context 'with a type and scope' do
@@ -81,6 +101,10 @@ describe Schmersion::Message do
 
     it 'has no footers' do
       expect(message.footers).to be_empty
+    end
+
+    it 'is not a merge' do
+      expect(message.merge?).to be false
     end
   end
 
@@ -116,6 +140,10 @@ describe Schmersion::Message do
 
     it 'has no footers' do
       expect(message.footers).to eq ['closes #10']
+    end
+
+    it 'is not a merge' do
+      expect(message.merge?).to be false
     end
   end
 
@@ -180,6 +208,10 @@ describe Schmersion::Message do
         'Reviewed-by: Jack Smith <jack@example.com>'
       ]
     end
+
+    it 'is not a merge' do
+      expect(message.merge?).to be false
+    end
   end
 
   context 'with a breaking change bang' do
@@ -211,6 +243,10 @@ describe Schmersion::Message do
 
     it 'has the breaking change boolean set' do
       expect(message.breaking_change?).to be true
+    end
+
+    it 'is not a merge' do
+      expect(message.merge?).to be false
     end
   end
 
@@ -257,6 +293,10 @@ describe Schmersion::Message do
         'This will no longer work with Ruby 2.5'
       ]
     end
+
+    it 'is not a merge' do
+      expect(message.merge?).to be false
+    end
   end
 
   context 'with multiple breaking change footers' do
@@ -283,6 +323,10 @@ describe Schmersion::Message do
         'This will no longer work with Ruby 2.5',
         'fancy_gem version 4.x or later is now required'
       ]
+    end
+
+    it 'is not a merge' do
+      expect(message.merge?).to be false
     end
   end
 end

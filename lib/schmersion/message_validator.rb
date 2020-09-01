@@ -17,6 +17,8 @@ module Schmersion
     end
 
     def validate_all
+      return if @message.merge?
+
       validate_valid_format
       return unless @message.valid?
 

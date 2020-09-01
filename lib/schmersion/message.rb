@@ -41,6 +41,10 @@ module Schmersion
         @breaking_changes.size.positive?
     end
 
+    def merge?
+      @raw_message.match?(/\AMerge\s+/)
+    end
+
     private
 
     def parse_header
