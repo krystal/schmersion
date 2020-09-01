@@ -1,4 +1,15 @@
 ---
+- version: 1.1.1
+  commits:
+  - ref: ecb4dcef8613994bdcc445d9ec519171d3cb4efc
+    date: '2020-09-01 13:58:34 +0100'
+    type: fix
+    scope: linting
+    description: allow merge commits to pass linting validation
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
 - version: 1.1.0
   commits:
   - ref: 03d3ff8562725b0bee7536ad5394276223985c10
