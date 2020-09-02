@@ -101,7 +101,6 @@ module Schmersion
 
     def version
       @version ||= begin
-        puts @repo.config.version_options
         @repo.pending_version(
           override_version: @options[:version],
           version_options: {
