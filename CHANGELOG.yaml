@@ -1,4 +1,24 @@
 ---
+- version: 1.1.2
+  commits:
+  - ref: 1edaef56576bb32f05f7ea8dad4809d3bd9e29bb
+    date: '2020-09-01 16:12:40 +0100'
+    type: style
+    scope: 
+    description: reduce length of a spec line to make rubocop happy
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
+  - ref: 68ccd272bbefd9b22213852bd8607f61a74981e9
+    date: '2020-09-02 14:37:31 +0100'
+    type: refactor
+    scope: 
+    description: remove debug puts
+    breaking_change: false
+    breaking_changes: []
+    pull_request_id: 
+    footers: []
 - version: 1.1.1
   commits:
   - ref: ecb4dcef8613994bdcc445d9ec519171d3cb4efc
