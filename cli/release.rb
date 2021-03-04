@@ -34,7 +34,7 @@ command :release do
     require 'schmersion/repo'
     require 'schmersion/releaser'
     repo = Schmersion::Repo.new(FileUtils.pwd)
-    releaser = Schmersion::Releaser.new(repo, context.options)
+    releaser = Schmersion::Releaser.new(repo, **context.options)
     releaser.release
   end
 end
